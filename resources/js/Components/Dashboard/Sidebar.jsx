@@ -23,7 +23,7 @@ export default function Sidebar() {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className={`${route().current('unit') && 'active'} nav-link`} href={route('unit')}>
+                        <Link className={`${route().current('unit.*') && 'active'} nav-link`} href={route('unit.index')}>
                             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i className="fa fa-balance-scale-right text-primary text-sm opacity-10" />
                             </div>
@@ -31,7 +31,7 @@ export default function Sidebar() {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className={`${route().current('category') && 'active'} nav-link`} href={route('category')}>
+                        <Link className={`${route().current('category.*') && 'active'} nav-link`} href={route('category.index')}>
                             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i className="ni ni-tv-2 text-primary text-sm opacity-10" />
                             </div>

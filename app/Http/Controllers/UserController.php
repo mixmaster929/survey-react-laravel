@@ -6,7 +6,7 @@ use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Log;
 class UserController extends Controller
 {
 
@@ -32,6 +32,9 @@ class UserController extends Controller
 
     public function update(UserRequest $request, User $user)
     {
+        Log::info("user=>".$user);
+        Log::info("request=>".$request);
+
         $attr = $request->toArray();
 
         $user->update($attr);

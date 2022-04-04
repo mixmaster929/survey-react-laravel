@@ -8,6 +8,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -15,8 +17,8 @@ Route::get('/', HomeController::class)->name('home');
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
     Route::apiResource('location', LocationController::class);
-    Route::get('unit', DashboardController::class)->name('unit');
-    Route::get('category', DashboardController::class)->name('category');
+    Route::apiResource('unit', UnitController::class);
+    Route::apiResource('category', CategoryController::class);
     Route::get('product', DashboardController::class)->name('product');
     Route::get('survey', DashboardController::class)->name('survey');
     Route::get('query', DashboardController::class)->name('query');

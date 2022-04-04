@@ -3,13 +3,13 @@ import React, { useState } from 'react'
 import Dialog from '../../Components/Dashboard/Dialog';
 import Base from '../../Layouts/Base'
 import useDialog from '../../Hooks/useDialog';
-import CreateLocation from '../../Components/Dashboard/Locations/CreateLocation';
-import EditLocation from '../../Components/Dashboard/Locations/EditLocation';
+import CreateUnit from '../../Components/Dashboard/Units/CreateUnit';
+import EditUnit from '../../Components/Dashboard/Units/EditUnit';
 import { Inertia } from '@inertiajs/inertia';
 
 export default function Index(props) {
 
-    const {data: locations, links, meta} = props.locations; 
+    const {data: units, links, meta} = props.units; 
     const [state, setState] = useState([])
     const [addDialogHandler, addCloseTrigger,addTrigger] = useDialog()
     const [UpdateDialogHandler, UpdateCloseTrigger,UpdateTrigger] = useDialog()
@@ -25,24 +25,25 @@ export default function Index(props) {
     };
 
     const destroyUser = () => {
+        console.log("state=>", state)
         Inertia.delete(
-            route('location.destroy', state.id), 
+            route('unit.destroy', state.id), 
             { onSuccess: () => destroyCloseTrigger() });
     }
 
     return (
         <>
             <div className="container-fluid py-4">
-                <Dialog trigger={addTrigger} title="Create New Location"> 
-                    <CreateLocation close={addCloseTrigger}/>
+                <Dialog trigger={addTrigger} title="Create New Unit"> 
+                    <CreateUnit close={addCloseTrigger}/>
                 </Dialog>
 
-                <Dialog trigger={UpdateTrigger} title={`Update Location: ${state.name}`}> 
-                    <EditLocation model={state} close={UpdateCloseTrigger}/>
+                <Dialog trigger={UpdateTrigger} title={`Update Unit: ${state.name}`}> 
+                    <EditUnit model={state} close={UpdateCloseTrigger}/>
                 </Dialog>
 
-                <Dialog trigger={destroyTrigger} title={`Delete Location: ${state.name}`}>
-                    <p>Are you sure to delete this location ?</p>
+                <Dialog trigger={destroyTrigger} title={`Delete Unit: ${state.name}`}>
+                    <p>Are you sure to delete this Unit ?</p>
                     <div className="modal-footer">
                         <button type="button" className="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" onClick={destroyUser} className="btn bg-gradient-danger">Delete</button>
@@ -55,11 +56,11 @@ export default function Index(props) {
                             <div className="card-header pb-0">
                             <div className="row">
                                 <div className="col-md-6">
-                                    <h6>Ubicaciones</h6>
+                                    <h6>Unidades</h6>
                                 </div>
                                 <div className="col-md-6 d-flex justify-content-end">
                                     <button onClick={addDialogHandler} type="button" className="btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">
-                                        Create New Location
+                                        Create New Unit
                                     </button>
                                 </div>
                             </div>
@@ -71,11 +72,12 @@ export default function Index(props) {
                                         <tr>
                                             <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-centter">#</th>
                                             <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-left">Name</th>
+                                            <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-left">Grams</th>
                                             <th className="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {locations.map((user, index) => (
+                                        {units.map((user, index) => (
                                             <tr key={user.id}>
                                                 <td className='text-left'>{meta.from + index}</td>
                                                 <td className='text-left'>
@@ -88,15 +90,25 @@ export default function Index(props) {
                                                         </div>
                                                     </div>
                                                 </td>
+                                                <td className='text-left'>
+                                                    <div className="d-flex px-2">
+                                                        {/* <div>
+                                                            <img src="/img/team-2.jpg" className="avatar avatar-sm  me-3 " />
+                                                        </div> */}
+                                                        <div className="my-auto">
+                                                            <h6 className="mb-0 text-sm">{user.grams}</h6>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                                 <td className="align-middle text-center" width="10%">
-                                                <div>
-                                                    <button type="button" onClick={() => openUpdateDialog(user)} className="btn btn-vimeo btn-icon-only mx-2">
-                                                        <span className="btn-inner--icon"><i className="fas fa-pencil-alt"></i></span>
-                                                    </button>
-                                                    <button type="button" onClick={() => openDestroyDialog(user)} className="btn btn-youtube btn-icon-only">
-                                                        <span className="btn-inner--icon"><i className="fas fa-trash"></i></span>
-                                                    </button>
-                                                </div>
+                                                    <div>
+                                                        <button type="button" onClick={() => openUpdateDialog(user)} className="btn btn-vimeo btn-icon-only mx-2">
+                                                            <span className="btn-inner--icon"><i className="fas fa-pencil-alt"></i></span>
+                                                        </button>
+                                                        <button type="button" onClick={() => openDestroyDialog(user)} className="btn btn-youtube btn-icon-only">
+                                                            <span className="btn-inner--icon"><i className="fas fa-trash"></i></span>
+                                                        </button>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         ))}
@@ -121,4 +133,4 @@ export default function Index(props) {
     )
 }
 
-Index.layout = (page) => <Base key={page} children={page} title={"Manage Locations"}/>
+Index.layout = (page) => <Base key={page} children={page} title={"Manage Units"}/>

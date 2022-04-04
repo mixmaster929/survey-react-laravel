@@ -2,7 +2,7 @@
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/agungksidik/laravel9-inertiajs-reactjs-starter.git
+   git clone https://github.com/mixmaster929/survey-react-laravel.git
    ```
 2. Install dependency Laravel
    ```sh

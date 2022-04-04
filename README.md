@@ -62,12 +62,10 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li><a href="#screenshoot">Screenshoot</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -80,17 +78,6 @@
     <li><a href="#contributing">Contributing</a></li>
   </ol>
 </details>
-
-
-
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/agungksidik/laravel9-inertiajs-reactjs-starter/master/images/screenshoot1.png" />
-</p>
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
 
@@ -229,20 +216,3 @@ Don't forget to give the project a star! Thanks again!
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/agungksidik/laravel9-inertiajs-reactjs-starter.svg?style=for-the-badge
-[contributors-url]: https://github.com/agungksidik/laravel9-inertiajs-reactjs-starter/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/agungksidik/laravel9-inertiajs-reactjs-starter.svg?style=for-the-badge
-[forks-url]: https://github.com/agungksidik/laravel9-inertiajs-reactjs-starter/network/members
-[stars-shield]: https://img.shields.io/github/stars/agungksidik/laravel9-inertiajs-reactjs-starter.svg?style=for-the-badge
-[stars-url]: https://github.com/agungksidik/laravel9-inertiajs-reactjs-starter/stargazers
-[issues-shield]: https://img.shields.io/github/issues/agungksidik/laravel9-inertiajs-reactjs-starter.svg?style=for-the-badge
-[issues-url]: https://github.com/agungksidik/laravel9-inertiajs-reactjs-starter/issues
-[license-shield]: https://img.shields.io/github/license/agungksidik/laravel9-inertiajs-reactjs-starter.svg?style=for-the-badge
-[license-url]: https://github.com/agungksidik/laravel9-inertiajs-reactjs-starter/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/agung-sidik-muhamad-5b427620b/
-[product-screenshot]: https://raw.githubusercontent.com/agungksidik/laravel9-inertiajs-reactjs-starter/master/images/screenshoot1.png

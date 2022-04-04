@@ -39,24 +39,6 @@
     <img src="https://raw.githubusercontent.com/agungksidik/public-assets/master/logo/reactjs-logo.png" alt="Logo" width="90" height="90">
   </a>
 
-<h3 align="center">Laravel Inertia ReactJs Starter</h3>
-
-  <p align="center">
-    This is a starter code to start the project, which already includes multiple layout admin templates with login for authentication
-    <br />
-    <a href="https://github.com/agungksidik/laravel9-inertiajs-reactjs-starter"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/agungksidik/laravel9-inertiajs-reactjs-starter">View Demo</a>
-    ·
-    <a href="https://github.com/agungksidik/laravel9-inertiajs-reactjs-starter/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/agungksidik/laravel9-inertiajs-reactjs-starter/issues">Request Feature</a>
-  </p>
-</div>
-
-
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -87,18 +69,6 @@
 * [Inertia](https://inertiajs.com/)
 * [Argon Dashboard 2](https://www.creative-tim.com/product/argon-dashboard)
 * [Laravel Socialite](https://github.com/laravel/socialite)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-## Screenshoot
-
-| Login | Register | Landing Page |
-| --- | --- | --- |
-| [![Login](https://raw.githubusercontent.com/agungksidik/public-assets/master/laravel9-inertiajs-reactjs-starter/login_page.png)](#) | [![Register](https://raw.githubusercontent.com/agungksidik/public-assets/master/laravel9-inertiajs-reactjs-starter/register_page.png)](#) | [![Landing Page](https://raw.githubusercontent.com/agungksidik/public-assets/master/laravel9-inertiajs-reactjs-starter/home_page.png)](#) |
-
-| Dashboard | Manage User | Profile Page |
-| --- | --- | --- |
-| [![Dashboard](https://raw.githubusercontent.com/agungksidik/public-assets/master/laravel9-inertiajs-reactjs-starter/dashboard_page.png)](#) | [![Manage User](https://raw.githubusercontent.com/agungksidik/public-assets/master/laravel9-inertiajs-reactjs-starter/manage_user.png)](#) | [![Profile Page](https://raw.githubusercontent.com/agungksidik/public-assets/master/laravel9-inertiajs-reactjs-starter/profile_page.png)](#) |
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

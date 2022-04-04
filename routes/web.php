@@ -7,12 +7,20 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LocationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
+    Route::apiResource('location', LocationController::class);
+    Route::get('unit', DashboardController::class)->name('unit');
+    Route::get('category', DashboardController::class)->name('category');
+    Route::get('product', DashboardController::class)->name('product');
+    Route::get('survey', DashboardController::class)->name('survey');
+    Route::get('query', DashboardController::class)->name('query');
+    Route::get('statistics', DashboardController::class)->name('statistics');
     Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
     
     Route::apiResource('users', UserController::class);

@@ -19,7 +19,7 @@ export default function Base({children, title}) {
                     <Navbar pageName={ title } />
                     <Toaster position='top-center' duration='4000'/>
                     {children}
-                    <Footer/>
+                    {/* <Footer/> */}
                 </main>            
         </div>
     )

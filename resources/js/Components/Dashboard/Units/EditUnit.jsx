@@ -5,11 +5,11 @@ export default function EditUnit({close, model}) {
 
     const {data, setData, put, reset, errors} = useForm({ name: model.name, grams: model.grams });
 
+    console.log("model=>", model)
     const onChange = (e) => setData({ ...data, [e.target.id]: e.target.value });
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log("id=>", data)
         put(route('unit.update', model.id), {
             data, 
             onSuccess: () => {

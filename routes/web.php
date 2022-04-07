@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
@@ -19,7 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::apiResource('location', LocationController::class);
     Route::apiResource('unit', UnitController::class);
     Route::apiResource('category', CategoryController::class);
-    Route::get('product', DashboardController::class)->name('product');
+    Route::apiResource('product', ProductController::class);
     Route::get('survey', DashboardController::class)->name('survey');
     Route::get('query', DashboardController::class)->name('query');
     Route::get('statistics', DashboardController::class)->name('statistics');

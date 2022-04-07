@@ -6,7 +6,7 @@ export default function Dialog({trigger, title, size = '', children}) {
             <div className={`modal-dialog modal-dialog-centered ${size}`}>
                 <div className="modal-content">
                     <div className="modal-header">
-                        <div classname="modal-title" id="exampleModalLabel">{title}</div>
+                        <div className="modal-title" id="exampleModalLabel">{title}</div>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span className='text-dark fw-bold' aria-hidden="true">X</span>
                         </button>

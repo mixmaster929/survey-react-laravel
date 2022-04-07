@@ -10,7 +10,6 @@ export default function Register({ errors }) {
     const changeHandler = (e) => setData({...data, [e.target.id]: e.target.value})
 
     const submitHandler = (e) => {
-        // console.log(data);
         e.preventDefault()
         post(route('register'), data);
     }

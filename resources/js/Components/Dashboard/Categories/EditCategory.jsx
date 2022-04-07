@@ -5,6 +5,7 @@ export default function EditCategory({close, model}) {
 
     const {data, setData, put, reset, errors} = useForm({ name: model.name });
 
+    console.log("model=>", model)
     const onChange = (e) => setData({ ...data, [e.target.id]: e.target.value });
 
     const onSubmit = (e) => {

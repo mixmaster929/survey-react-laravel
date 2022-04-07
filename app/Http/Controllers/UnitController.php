@@ -47,6 +47,7 @@ class UnitController extends Controller
     public function destroy(Units $units)
     {
         Log::info("units=>".$units);
+        
         $units->delete();
 
         return back()->with([

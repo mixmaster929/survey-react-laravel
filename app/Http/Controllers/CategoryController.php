@@ -6,6 +6,7 @@ use App\Http\Requests\CategoryRequest;
 use App\Http\Resources\CategoryResource;
 use App\Models\Categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CategoryController extends Controller
 {
@@ -31,6 +32,8 @@ class CategoryController extends Controller
 
     public function update(CategoryRequest $request, Categories $category)
     {
+        Log::info("category=>".$category);
+        Log::info("request=>".$request);
         $attr = $request->toArray();
 
         $category->update($attr);

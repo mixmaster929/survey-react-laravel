@@ -33,19 +33,19 @@ export default function Index(props) {
     return (
         <>
             <div className="container-fluid py-4">
-                <Dialog trigger={addTrigger} title="Create New Unit"> 
+                <Dialog trigger={addTrigger} title="Por favor ingrese la unit"> 
                     <CreateUnit close={addCloseTrigger}/>
                 </Dialog>
 
-                <Dialog trigger={UpdateTrigger} title={`Update Unit: ${state.name}`}> 
+                <Dialog trigger={UpdateTrigger} title={`Ingrese el nuevo nombre`}> 
                     <EditUnit model={state} close={UpdateCloseTrigger}/>
                 </Dialog>
 
-                <Dialog trigger={destroyTrigger} title={`Delete Unit: ${state.name}`}>
-                    <p>Are you sure to delete this Unit ?</p>
+                <Dialog trigger={destroyTrigger}>
+                    <p>Esta seguro que desea borrar esta ubicacion?</p>
                     <div className="modal-footer">
-                        <button type="button" className="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" onClick={destroyUser} className="btn bg-gradient-danger">Delete</button>
+                        <button type="button" className="btn bg-gradient-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="submit" onClick={destroyUser} className="btn bg-gradient-danger">Si</button>
                     </div>
                 </Dialog>
 
@@ -59,7 +59,7 @@ export default function Index(props) {
                                 </div>
                                 <div className="col-md-6 d-flex justify-content-end">
                                     <button onClick={addDialogHandler} type="button" className="btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">
-                                        Create New Unit
+                                    Agregar Unidad
                                     </button>
                                 </div>
                             </div>
@@ -70,9 +70,9 @@ export default function Index(props) {
                                     <thead>
                                         <tr>
                                             <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-centter">#</th>
-                                            <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-left">Name</th>
-                                            <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-left">Grams</th>
-                                            <th className="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Actions</th>
+                                            <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-left">Nombre</th>
+                                            <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-left">Gramos</th>
+                                            <th className="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Accion</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -132,4 +132,4 @@ export default function Index(props) {
     )
 }
 
-Index.layout = (page) => <Base key={page} children={page} title={"Manage Units"}/>
+Index.layout = (page) => <Base key={page} children={page} title={"Unidades"}/>

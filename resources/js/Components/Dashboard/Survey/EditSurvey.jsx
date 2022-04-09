@@ -1,5 +1,4 @@
 import { useForm } from '@inertiajs/inertia-react'
-import { each } from 'lodash';
 import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
 
@@ -47,7 +46,6 @@ export default function EditSurvey({close, model, locations, products, categorie
         if(typeof _location_ == "undefined")
             console.log("Undefined location");
         else{
-            console.log("Defined location");
             const opt_locations = [];
             const lot_split = _location_.split(",");
             
@@ -62,10 +60,8 @@ export default function EditSurvey({close, model, locations, products, categorie
         if(typeof _category_ == "undefined")
             console.log("Undefined category");
         else{
-            console.log("Defined category");
             const opt_categories = [];
             const cat_split = _category_.split(",");
-            console.log("cat_split=>", cat_split);
             cat_split.map((each) => {
                 categories.map((category) => {
                     if(category.id === parseInt(each, 10))
@@ -77,7 +73,6 @@ export default function EditSurvey({close, model, locations, products, categorie
         if(typeof _product_ == "undefined")
             console.log("Undefined product");
         else{
-            console.log("Defined product");
             const opt_products = [];
             const opt_products_split = [];
             const prod_split = _product_.split(",");
@@ -167,8 +162,8 @@ export default function EditSurvey({close, model, locations, products, categorie
                     </div>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" className="btn bg-gradient-primary">Update</button>
+                    <button type="button" className="btn bg-gradient-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" className="btn bg-gradient-primary">Guardar</button>
                 </div>
             </form>
         </>

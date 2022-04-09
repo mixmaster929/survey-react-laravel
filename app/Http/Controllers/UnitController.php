@@ -32,8 +32,6 @@ class UnitController extends Controller
 
     public function update(UnitRequest $request, Units $units)
     {
-        Log::info("units=>".$units);
-        Log::info("request=>".$request);
         $attr = $request->toArray();
 
         $units->update($attr);
@@ -46,8 +44,6 @@ class UnitController extends Controller
 
     public function destroy(Units $units)
     {
-        Log::info("units=>".$units);
-        
         $units->delete();
 
         return back()->with([

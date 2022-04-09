@@ -12,9 +12,10 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SurveyController;
+use App\Http\Controllers\QueryController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', HomeController::class)->name('home');
+Route::get('/', DashboardController::class)->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
@@ -23,7 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::apiResource('category', CategoryController::class);
     Route::apiResource('product', ProductController::class);
     Route::apiResource('survey', SurveyController::class);
-    Route::get('query', DashboardController::class)->name('query');
+    Route::apiResource('query', QueryController::class);
+
     Route::get('statistics', DashboardController::class)->name('statistics');
     Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
     

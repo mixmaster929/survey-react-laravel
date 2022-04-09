@@ -22,4 +22,9 @@ class Categories extends Model
     {
         return $this->hasMany(Product::class, 'category_id');
     }
+
+    public function queries()
+    {
+        return $this->hasMany(Query::class, 'category_id');
+    }
 }

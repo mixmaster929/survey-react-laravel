@@ -32,8 +32,6 @@ class CategoryController extends Controller
 
     public function update(CategoryRequest $request, Categories $category)
     {
-        Log::info("category=>".$category);
-        Log::info("request=>".$request);
         $attr = $request->toArray();
 
         $category->update($attr);

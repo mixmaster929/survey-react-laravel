@@ -3,23 +3,15 @@ import React, { useState } from 'react'
 import Dialog from '../../Components/Dashboard/Dialog';
 import Base from '../../Layouts/Base'
 import useDialog from '../../Hooks/useDialog';
-import CreateProduct from '../../Components/Dashboard/Products/CreateProduct';
-import EditProduct from '../../Components/Dashboard/Products/EditProduct';
 import { Inertia } from '@inertiajs/inertia';
 
 export default function Index(props) {
 
-    const {data: products, links, meta} = props.products; 
-    const { categories, units } = props;
+    const {data: query, links, meta} = props.query; 
     
     const [state, setState] = useState([])
     const [addDialogHandler, addCloseTrigger,addTrigger] = useDialog()
-    const [UpdateDialogHandler, UpdateCloseTrigger,UpdateTrigger] = useDialog()
     const [destroyDialogHandler, destroyCloseTrigger,destroyTrigger] = useDialog()
-    const openUpdateDialog = (user) => {
-        setState(user);
-        UpdateDialogHandler()
-    }
 
     const openDestroyDialog = (user) => {
         setState(user);
@@ -28,20 +20,13 @@ export default function Index(props) {
 
     const destroyUser = () => {
         Inertia.delete(
-            route('product.destroy', state.id), 
+            route('query.destroy', state.id), 
             { onSuccess: () => destroyCloseTrigger() });
     }
 
     return (
         <>
             <div className="container-fluid py-4">
-                <Dialog trigger={addTrigger} title="Agregar Producto"> 
-                    <CreateProduct close={addCloseTrigger} categories={categories} units={units} />
-                </Dialog>
-
-                <Dialog trigger={UpdateTrigger} title={`Editar Producto`}> 
-                    <EditProduct model={state} close={UpdateCloseTrigger} categories={categories} units={units} />
-                </Dialog>
 
                 <Dialog trigger={destroyTrigger}>
                     <p>Esta seguro que desea borrar esta ubicacion?</p>
@@ -57,11 +42,20 @@ export default function Index(props) {
                             <div className="card-header pb-0">
                                 <div className="row">
                                     <div className="col-md-6">
-                                        <h6>Productos</h6>
-                                    </div>
-                                    <div className="col-md-6 d-flex justify-content-end">
                                         <button onClick={addDialogHandler} type="button" className="btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">
-                                        Agregar Producto
+                                            Copy
+                                        </button>
+                                        <button style={{ marginLeft: '10px'}} onClick={addDialogHandler} type="button" className="btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">
+                                            CSV
+                                        </button>
+                                        <button style={{ marginLeft: '10px'}} onClick={addDialogHandler} type="button" className="btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">
+                                            Excel
+                                        </button>
+                                        <button style={{ marginLeft: '10px'}} onClick={addDialogHandler} type="button" className="btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">
+                                            PDF
+                                        </button>
+                                        <button style={{ marginLeft: '10px'}} onClick={addDialogHandler} type="button" className="btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">
+                                            Print
                                         </button>
                                     </div>
                                 </div>
@@ -72,51 +66,41 @@ export default function Index(props) {
                                         <thead>
                                             <tr>
                                                 <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-centter">#</th>
-                                                <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-left">Nombre Principal</th>
-                                                <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-left">Nombre Alternativo</th>
+                                                <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-left">Fecha</th>
+                                                <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-left">Ubicacion</th>
                                                 <th className="text-uppercase text-secondary text-xxs font-weight-bolder text-left opacity-7 ps-2">Categoria</th>
-                                                <th className="text-uppercase text-secondary text-xxs font-weight-bolder text-left opacity-7 ps-2">Unidad/Gramos</th>
-                                                <th className="text-uppercase text-secondary text-xxs font-weight-bolder text-left opacity-7 ps-2">CAE</th>
+                                                <th className="text-uppercase text-secondary text-xxs font-weight-bolder text-left opacity-7 ps-2">Nombre Principal</th>
+                                                <th className="text-uppercase text-secondary text-xxs font-weight-bolder text-left opacity-7 ps-2">Precio P</th>
+                                                <th className="text-uppercase text-secondary text-xxs font-weight-bolder text-left opacity-7 ps-2">Precio A</th>
                                                 <th className="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Accion</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {products.map((user, index) => (
+                                            {query.map((user, index) => (
                                                 <tr key={user.id}>
                                                     <td className='text-center'>{meta.from + index}</td>
+                                                    <td className='text-center'>{user.updated_at.substr(0, 10)}</td>
                                                     <td className='text-left'>
                                                         <div className="d-flex px-2">
-                                                            {/* <div>
-                                                                <img src="/img/team-2.jpg" className="avatar avatar-sm  me-3 " />
-                                                            </div> */}
                                                             <div className="my-auto">
-                                                                <h6 className="mb-0 text-sm">{user.main_name}</h6>
+                                                                <h6 className="mb-0 text-sm">{user.categories.name}</h6>
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td className='text-left'>
-                                                        <p className="text-sm font-weight-bold mb-0">{user.alter_name}</p>
+                                                        <p className="text-sm font-weight-bold mb-0">{user.locations.name}</p>
                                                     </td>
                                                     <td className='text-left'>
-                                                        {categories.map((category, index) => (
-                                                            <span className="text-xs font-weight-bold" key={index}>{user.category_id === category.id? category.name : null}</span>
-                                                        ))}
+                                                        <p className="text-sm font-weight-bold mb-0">{user.products.main_name}</p>
                                                     </td>
                                                     <td className="align-middle text-left">
-                                                        <div className="d-flex align-items-center text-left">
-                                                            {units.map((unit, index) => (
-                                                                <span className="text-xs font-weight-bold mb-0" key={index}>{user.unit_id  === unit.id? unit.name : null}</span>
-                                                            ))}
-                                                        </div>
+                                                        <p className="text-sm font-weight-bold mb-0">{user.main_price}</p>
                                                     </td>
                                                     <td className='text-left'>
-                                                        <span className="text-xs font-weight-bold">{user.amount}</span>
+                                                        <span className="text-xs font-weight-bold">{user.alter_price}</span>
                                                     </td>
                                                     <td className="align-middle text-center" width="10%">
                                                     <div>
-                                                        <button type="button" onClick={() => openUpdateDialog(user)} className="btn btn-vimeo btn-icon-only mx-2">
-                                                            <span className="btn-inner--icon"><i className="fas fa-pencil-alt"></i></span>
-                                                        </button>
                                                         <button type="button" onClick={() => openDestroyDialog(user)} className="btn btn-youtube btn-icon-only">
                                                             <span className="btn-inner--icon"><i className="fas fa-trash"></i></span>
                                                         </button>
@@ -145,4 +129,4 @@ export default function Index(props) {
     )
 }
 
-Index.layout = (page) => <Base key={page} children={page} title={"Productos"}/>
+Index.layout = (page) => <Base key={page} children={page} title={"Resultados"}/>

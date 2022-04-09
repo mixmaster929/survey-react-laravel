@@ -27,7 +27,7 @@ export default function CreateProduct({categories, units, close}) {
             <form onSubmit={onSubmit}>
                 <div className="modal-body">
                         <div className="form-group">
-                            <label htmlFor="category_id" className="col-form-label">Category:</label>
+                            <label htmlFor="category_id" className="col-form-label">Categoria:</label>
                             <select className="form-control" name='category_id' value={data.category_id} onChange={onChange} id="category_id">
                                 <option></option>
                                 {categories.map((category, index) => (
@@ -37,22 +37,22 @@ export default function CreateProduct({categories, units, close}) {
                             {errors && <div className='text-danger mt-1'>{errors.category_id}</div>}
                         </div>
                         <div className="form-group">
-                            <label htmlFor="main_name" className="col-form-label">Main Name:</label>
+                            <label htmlFor="main_name" className="col-form-label">Producto Principal:</label>
                             <input type="text" className="form-control" name='main_name' value={data.main_name} onChange={onChange} id="main_name"/>
                             {errors && <div className='text-danger mt-1'>{errors.main_name}</div>}
                         </div>
                         <div className="form-group">
-                            <label htmlFor="alter_name" className="col-form-label">Alter Name:</label>
+                            <label htmlFor="alter_name" className="col-form-label">Producto Alternativo:</label>
                             <input type="alter_name" className="form-control" name='alter_name' value={data.alter_name} onChange={onChange} id="alter_name"/>
                             {errors && <div className='text-danger mt-1'>{errors.alter_name}</div>}
                         </div>
                         <div className="form-group">
-                            <label htmlFor="amount" className="col-form-label">Amount:</label>
+                            <label htmlFor="amount" className="col-form-label">CAE:</label>
                             <input type="number" className="form-control" name='amount' value={data.amount} onChange={onChange} id="amount"/>
                             {errors && <div className='text-danger mt-1'>{errors.amount}</div>}
                         </div>
                         <div className="form-group">
-                            <label htmlFor="unit_id" className="col-form-label">Unit:</label>
+                            <label htmlFor="unit_id" className="col-form-label">Seleccione la unidad del producto:</label>
                             <select className="form-control" name='unit_id' value={data.unit_id} onChange={onChange} id="unit_id">
                                 <option></option>
                                 {units.map((unit, index) => (
@@ -64,8 +64,8 @@ export default function CreateProduct({categories, units, close}) {
                         </div>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" className="btn bg-gradient-primary">Save</button>
+                    <button type="button" className="btn bg-gradient-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" className="btn bg-gradient-primary">Guardar</button>
                 </div>
             </form>
         </>

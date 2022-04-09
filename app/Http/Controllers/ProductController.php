@@ -15,13 +15,8 @@ class ProductController extends Controller
     public function index()
     {
         $products = ProductResource::collection(Product::latest()->paginate(10));
-        // $_products = Product::with('categories')->orderBy('id');
-        // $results = ProductResource::collection($_products->paginate(10));
         $categories = Categories::orderBy('id')->get();
         $units = Units::orderBy('id')->get();
-        // Log::info("product=>".$_products);
-        // Log::info("categories=>".$categories);
-        // Log::info("results=>".json_encode($results));
         return inertia('Products/Index', [
             'products' => $products,
             'units' => $units,
@@ -43,9 +38,6 @@ class ProductController extends Controller
 
     public function update(ProductRequest $request, Product $product)
     {
-        Log::info("product=>".$product);
-        Log::info("request=>".$request);
-
         $attr = $request->toArray();
 
         $product->update($attr);

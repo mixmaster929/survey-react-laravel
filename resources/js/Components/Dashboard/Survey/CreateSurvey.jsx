@@ -111,8 +111,8 @@ export default function CreateSurvey({close, categories, locations}) {
                     </div>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" className="btn bg-gradient-primary">Save</button>
+                    <button type="button" className="btn bg-gradient-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" className="btn bg-gradient-primary">Guardar</button>
                 </div>
             </form>
         </>

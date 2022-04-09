@@ -19,19 +19,4 @@ class Survey extends Model
         'category_id',
         'product_id',
     ];
-
-    public function categories()
-    {
-        return $this->belongsTo(Categories::class, 'category_id');
-    }
-
-    public function locations()
-    {
-        return $this->belongsTo(Locations::class, 'location_id');
-    }
-
-    public function products()
-    {
-        return $this->belongsTo(Product::class, 'product_id');
-    }
 }

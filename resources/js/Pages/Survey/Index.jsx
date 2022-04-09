@@ -5,6 +5,7 @@ import Base from '../../Layouts/Base'
 import useDialog from '../../Hooks/useDialog';
 import CreatSurvey from '../../Components/Dashboard/Survey/CreateSurvey';
 import EditSurvey from '../../Components/Dashboard/Survey/EditSurvey';
+import AddPriceSurvey from '../../Components/Dashboard/Survey/AddPriceSurvey';
 import { Inertia } from '@inertiajs/inertia';
 
 export default function Index(props) {
@@ -13,8 +14,14 @@ export default function Index(props) {
     const { categories, locations, products } = props;
     const [state, setState] = useState([])
     const [addDialogHandler, addCloseTrigger,addTrigger] = useDialog()
+    const [addPriceDialogHandler, addPriceCloseTrigger,addPriceTrigger] = useDialog()
     const [UpdateDialogHandler, UpdateCloseTrigger,UpdateTrigger] = useDialog()
     const [destroyDialogHandler, destroyCloseTrigger,destroyTrigger] = useDialog()
+    const openAddDialog = (user) => {
+        setState(user);
+        addPriceDialogHandler()
+    }
+
     const openUpdateDialog = (user) => {
         setState(user);
         UpdateDialogHandler()
@@ -90,19 +97,23 @@ export default function Index(props) {
     return (
         <>
             <div className="container-fluid py-4">
+                <Dialog trigger={addPriceTrigger} title="Add Price to Product"> 
+                    <AddPriceSurvey model={state} close={addPriceCloseTrigger} categories={categories} locations={locations} products={products} />
+                </Dialog>
+
                 <Dialog trigger={addTrigger} title="Crear Nuevo Relevamiento"> 
                     <CreatSurvey close={addCloseTrigger} categories={categories} locations={locations} />
                 </Dialog>
 
-                <Dialog trigger={UpdateTrigger} title={`Update Survey: ${state.name}`}> 
+                <Dialog trigger={UpdateTrigger} title={`Editar Relevamiento`}> 
                     <EditSurvey model={state} close={UpdateCloseTrigger} categories={categories} locations={locations} products={products} />
                 </Dialog>
 
-                <Dialog trigger={destroyTrigger} title={`Delete Survey: ${state.name}`}>
-                    <p>Are you sure to delete this Survey ?</p>
+                <Dialog trigger={destroyTrigger}>
+                    <p>Esta seguro que desea borrar esta ubicacion?</p>
                     <div className="modal-footer">
-                        <button type="button" className="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" onClick={destroyUser} className="btn bg-gradient-danger">Delete</button>
+                        <button type="button" className="btn bg-gradient-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="submit" onClick={destroyUser} className="btn bg-gradient-danger">Si</button>
                     </div>
                 </Dialog>
 
@@ -112,11 +123,11 @@ export default function Index(props) {
                             <div className="card-header pb-0">
                             <div className="row">
                                 <div className="col-md-6">
-                                    <h6>Unidades</h6>
+                                    <h6>Relevamientos</h6>
                                 </div>
                                 <div className="col-md-6 d-flex justify-content-end">
                                     <button onClick={addDialogHandler} type="button" className="btn bg-gradient-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">
-                                        Create New Survey
+                                    Agregar Relevamiento
                                     </button>
                                 </div>
                             </div>
@@ -130,7 +141,7 @@ export default function Index(props) {
                                             <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-left">Ubicacion</th>
                                             <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-left">Categorias</th>
                                             <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-left">Productos</th>
-                                            <th className="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Actions</th>
+                                            <th className="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Accion</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -160,6 +171,9 @@ export default function Index(props) {
                                                 </td>
                                                 <td className="align-middle text-center" width="10%">
                                                     <div>
+                                                        <button type="button" onClick={() => openAddDialog(user)} className="btn bg-gradient-success btn-icon-only mx-2">
+                                                            <span className="btn-inner--icon"><i className="fas fa-plus"></i></span>
+                                                        </button>
                                                         <button type="button" onClick={() => openUpdateDialog(user)} className="btn btn-vimeo btn-icon-only mx-2">
                                                             <span className="btn-inner--icon"><i className="fas fa-pencil-alt"></i></span>
                                                         </button>
@@ -191,4 +205,4 @@ export default function Index(props) {
     )
 }
 
-Index.layout = (page) => <Base key={page} children={page} title={"Manage Units"}/>
+Index.layout = (page) => <Base key={page} children={page} title={"Relevamientos"}/>

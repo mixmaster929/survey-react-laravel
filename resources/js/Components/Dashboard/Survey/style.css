@@ -64,7 +64,7 @@ button:hover {
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
-  background: url("http://svgshare.com/i/41_.svg") no-repeat center center /
+  background: url("http://localhost:8000/img/icons8-arrow-24.png") no-repeat center center /
     16px;
   width: 32px;
   height: 32px;
@@ -74,7 +74,7 @@ button:hover {
 
 .previousButton:hover,
 .nextButton:hover {
-  background: url("http://svgshare.com/i/41_.svg") no-repeat center center /
+  background: url("http://localhost:8000/img/icons8-arrow-24.png") no-repeat center center /
     16px;
 }
 

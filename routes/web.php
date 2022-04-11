@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::apiResource('product', ProductController::class);
     Route::apiResource('survey', SurveyController::class);
     Route::apiResource('query', QueryController::class);
+    Route::post('query/result', [QueryController::class, 'result'])->name('query.result');
 
     Route::get('statistics', DashboardController::class)->name('statistics');
     Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
